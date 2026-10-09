@@ -58,7 +58,7 @@ Nexus is a production-ready e-commerce backend that provides:
 - Clean JSON responses
 - API Resources for consistent formatting
 - Custom exceptions with proper HTTP status codes
-- Versioned endpoints (`/api/v1/`)
+- Versioned endpoints (`/api/`)
 - Search, filter, and pagination support
 
 ---
@@ -104,8 +104,8 @@ Each module is self-contained with its own:
 
 ```bash
 # Clone
-git clone https://github.com/ayhambsmar36-maker/nexus-ecommerce-platform.git
-cd nexus-commerce-platform
+git clone https://github.com/ayhambsmar36-maker/nexus-ecommerce.git
+cd nexus-ecommerce
 
 # Install dependencies
 composer install
