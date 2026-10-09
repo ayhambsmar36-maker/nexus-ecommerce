@@ -1,59 +1,129 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Nexus Commerce Platform
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A modern, modular e-commerce platform built with **Laravel 11**, 
+**Filament**, and **Laravel Sanctum**. Designed with a 
+**Modular Monolith** architecture to support multiple stores, 
+product variants, and a full-featured RESTful API.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Overview
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Nexus is a production-ready e-commerce backend that provides:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Admin Panel** (Filament) for store owners and staff
+- **RESTful API** for customers (mobile apps, SPAs)
+- **Modular Architecture** for scalability and maintainability
+- **Role-Based Access Control** (RBAC) for different user types
+- **Multi-Store Ready** (architecture supports it, single-store by default)
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## Key Features
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 🛍️ Catalog Management
+- Hierarchical categories (parent/child)
+- Products with multiple attributes (color, size, material, etc.)
+- Automatic product variant generation (Cartesian product)
+- Per-variant pricing, SKU, and inventory
+- Low-stock alerts and stock tracking
 
-## Laravel Sponsors
+### 🛒 Cart System
+- Customer-only cart (authentication required)
+- Add, update, remove items
+- Automatic cart archiving after order
+- Quantity validation against stock
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 📦 Order Management
+- Order creation from cart with atomic transactions
+- Order lifecycle: `pending → paid → shipped → delivered → cancelled`
+- Snapshot of product data (name, SKU, price) at purchase time
+- Order cancellation with stock restoration
+- Bulk order status management via Filament
 
-### Premium Partners
+### 🔐 Authentication & Authorization
+- **Sanctum** for customer API authentication (Bearer tokens)
+- **Session-based** auth for admin panel (Filament)
+- **Role-Based Access Control** (Super Admin, Admin, Staff)
+- Custom policies for each resource
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 🎨 Admin Panel (Filament)
+- Product, Category, Attribute management
+- Order management with status actions
+- User & role management
+- Dashboard with statistics widgets
+- RTL support (Arabic interface)
 
-## Contributing
+### 🌐 RESTful API
+- Clean JSON responses
+- API Resources for consistent formatting
+- Custom exceptions with proper HTTP status codes
+- Versioned endpoints (`/api/v1/`)
+- Search, filter, and pagination support
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## Tech Stack
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+| Layer | Technology |
+|-------|-----------|
+| **Framework** | Laravel 11+ |
+| **PHP** | 8.2+ |
+| **Admin Panel** | Filament 3 |
+| **API Auth** | Laravel Sanctum |
+| **Modules** | nwidart/laravel-modules |
+| **Permissions** | spatie/laravel-permission |
+| **Debugging** | Laravel Telescope |
+| **Database** | MySQL 8 / PostgreSQL |
+| **Queue** | Database (Redis-ready) |
+| **Cache** | Database (Redis-ready) |
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Architecture
 
-## License
+The project follows a **Modular Monolith** architecture:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+Each module is self-contained with its own:
+- Models, Migrations, Services
+- Controllers, Routes, Requests
+- Resources, Exceptions
+
+---
+
+## Installation
+
+### Prerequisites
+- PHP 8.2+
+- Composer
+- MySQL 8+ or PostgreSQL
+- Node.js 18+ (for Filament assets)
+
+### Setup
+
+```bash
+# Clone
+git clone https://github.com/ayhambsmar36-maker/nexus-ecommerce-platform.git
+cd nexus-commerce-platform
+
+# Install dependencies
+composer install
+npm install
+
+# Environment
+cp .env.example .env
+php artisan key:generate
+
+# Database
+php artisan migrate
+php artisan db:seed
+
+# Filament assets
+php artisan filament:assets
+
+# Storage
+php artisan storage:link
+
+# Run
+php artisan serve
