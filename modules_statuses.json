@@ -1,0 +1,7 @@
+{
+    "Catalog": true,
+    "Migration": true,
+    "AddCoulmnStatusToProduct": true,
+    "Cart": true,
+    "Order": true
+}
