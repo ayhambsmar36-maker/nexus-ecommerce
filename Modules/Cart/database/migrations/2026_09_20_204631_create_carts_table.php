@@ -20,7 +20,7 @@ return new class extends Migration
           ->cascadeOnDelete();
     
    
-    $table->enum('status', ['active', 'completed', 'abandoned'])->default('active')->after('customer_id');
+    $table->enum('status', ['active', 'completed', 'abandoned'])->default('active');
     $table->timestamp('expires_at')->nullable();
     
     $table->timestamps();
